@@ -1,11 +1,13 @@
 package ca.mhowatnait.lab1_oscarreviews;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import org.apache.http.NameValuePair;
@@ -24,6 +26,27 @@ public class OscarSendActivity extends AppCompatActivity implements View.OnClick
         inflater.inflate(R.menu.main_menu, menu);
 
 
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.menu_item_send_review:
+            {
+                Intent intent = new Intent(this, OscarSendActivity.class);
+                this.startActivity(intent);
+                break;
+            }
+            case R.id.menu_item_preferences:
+            {
+                Intent intent = new Intent(this, PrefsActivity.class);
+                this.startActivity(intent);
+                break;
+            }
+
+        }
         return true;
     }
 
