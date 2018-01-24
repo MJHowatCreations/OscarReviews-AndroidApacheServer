@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:key="user_name"
+        android:title="Username"
+        android:summary="Use this to change your Alias."
+        />
+    <EditTextPreference
+        android:key="user_password"
+        android:title="Password"
+        android:summary="Use this to change your password"
+        android:defaultValue=""
+        />
+    <EditTextPreference
+        android:key="web_server_address"
+        android:title="Web Server Address"
+        android:summary="Change the default web server"
+        android:defaultValue=""
+        />
+
+
+
+</PreferenceScreen>
