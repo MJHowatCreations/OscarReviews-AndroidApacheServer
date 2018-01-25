@@ -2,14 +2,15 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <EditTextPreference
-        android:key="user_name"
-        android:title="Username"
+        android:key="reviewer_name"
+        android:title="Reviewer"
         android:summary="Use this to change your Alias."
         />
     <EditTextPreference
         android:key="user_password"
         android:title="Password"
         android:summary="Use this to change your password"
+        android:password="true"
         android:defaultValue=""
         />
     <EditTextPreference
@@ -17,6 +18,14 @@
         android:title="Web Server Address"
         android:summary="Change the default web server"
         android:defaultValue=""
+        />
+
+    <ListPreference
+        android:key="main_bg_color_list"
+        android:title="Main Background Color"
+        android:summary="Select your background color from the list"
+        android:entries="@array/color_names"
+        android:entryValues="@array/color_values"
         />
 
 

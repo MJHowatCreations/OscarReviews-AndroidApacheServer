@@ -1,3 +1,25 @@
 <resources>
-    <string name="app_name">Lab1-OscarReviews</string>
+    <string name="app_name">Oscar Review</string>
+
+
+
+
+    <!-- Button Names -->
+
+    <string name="oscar_send_activity_button">Submit Review</string>
+
+
+
+    <!-- Radio Button Names -->
+
+    <string name="radio_button_best_picture">Best Picture</string>
+    <string name="radio_button_best_actor">Best Actor</string>
+    <string name="radio_button_best_actress">Best Actress</string>
+    <string name="radio_button_film_editing">Film Editing</string>
+    <string name="radio_button_visual_effects">Visual Effects</string>
+
+
+
+
+
 </resources>
