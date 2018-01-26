@@ -3,6 +3,8 @@ package ca.mhowatnait.lab1_oscarreviews;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Build;
+import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +12,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
@@ -35,11 +39,21 @@ public class OscarSendActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oscar_send);
         settings = PreferenceManager.getDefaultSharedPreferences(this);
+        settings.registerOnSharedPreferenceChangeListener(this);
 
         mainView = findViewById(R.id.layout_send_activity);
         String bgColor = settings.getString("main_bg_color_list", "#FFFFFF" );
 
         mainView.setBackgroundColor(Color.parseColor(bgColor));
+
+        if(Build.VERSION.SDK_INT > 9){
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+
+        Button sendButton = (Button) findViewById(R.id.oscar_send_button);
+        sendButton.setOnClickListener(this);
+
     }
 
 
@@ -55,9 +69,9 @@ public class OscarSendActivity extends AppCompatActivity implements View.OnClick
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
 
-
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -75,18 +89,57 @@ public class OscarSendActivity extends AppCompatActivity implements View.OnClick
                 this.startActivity(intent);
                 break;
             }
-
         }
         return true;
     }
 
     @Override
     public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.oscar_send_button: {
+                postToChatter();
+            }
 
 
+        }
     }
 
 //    METHODS
+
+
+    public String onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+        String radioStringReturn = "";
+        switch(view.getId()) {
+            case R.id.radio_button_best_picture:
+                if (checked) {
+                    radioStringReturn ="film";
+                    break;
+                }
+            case R.id.radio_button_best_actor:
+                if (checked) {
+                    radioStringReturn = "actor";
+                    break;
+                }
+            case R.id.radio_button_best_actress:
+                if (checked) {
+                    radioStringReturn = "actress";
+                    break;
+                }
+            case R.id.radio_button_film_editing:
+                if (checked) {
+                    radioStringReturn = "editing";
+                    break;
+                }
+            case R.id.radio_button_visual_effects:;
+                if (checked) {
+                    radioStringReturn = "effects";
+                    break;
+                }
+        }
+        return radioStringReturn;
+    }
+
 
     private void postToChatter()
     {
@@ -94,15 +147,19 @@ public class OscarSendActivity extends AppCompatActivity implements View.OnClick
         EditText editTextNominee = (EditText)findViewById(R.id.edit_text_nominee);
         String chatReview = editTextReview.getText().toString();
         String chatNominee = editTextNominee.getText().toString();
+        String category = onRadioButtonClicked(mainView);
         String userName = settings.getString("reviewer_name", "Harvey Weinstein");
-        String password = settings.getString("user_password", "none");
+        String password = settings.getString("user_password", /*remove default password*/"oscar275");
         try
         {
             HttpClient client = new DefaultHttpClient();
             HttpPost post = new HttpPost("http://www.youcode.ca/Lab01Servlet");
             List<NameValuePair> postParameters = new ArrayList<NameValuePair>();
-            postParameters.add(new BasicNameValuePair("DATA", chat));
-            postParameters.add(new BasicNameValuePair("LOGIN_NAME", userName));
+            postParameters.add(new BasicNameValuePair("REVIEW", chatReview));
+            postParameters.add(new BasicNameValuePair("REVIEWER", userName));
+            postParameters.add(new BasicNameValuePair("NOMINEE", chatNominee));
+            postParameters.add(new BasicNameValuePair("CATEGORY", category));
+            postParameters.add(new BasicNameValuePair("PASSWORD", password));
             UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(postParameters);
             post.setEntity(formEntity);
             client.execute(post);
@@ -112,7 +169,8 @@ public class OscarSendActivity extends AppCompatActivity implements View.OnClick
         {
             Toast.makeText(this, "Error:" + e, Toast.LENGTH_LONG).show();
         }
-        edittext.getText().clear();
+        editTextReview.getText().clear();
+        editTextNominee.getText().clear();
     }
 
 
