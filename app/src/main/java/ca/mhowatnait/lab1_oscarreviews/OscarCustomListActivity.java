@@ -1,4 +1,4 @@
-package ca.mhowatnait.lab1_oscarreviews;
+/*package ca.mhowatnait.lab1_oscarreviews;
 
 import android.app.ListActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -74,3 +74,4 @@ public class OscarCustomListActivity extends ListActivity {
         }
     }
 }
+*/

@@ -147,7 +147,7 @@ public class OscarSendActivity extends AppCompatActivity implements View.OnClick
         EditText editTextNominee = (EditText)findViewById(R.id.edit_text_nominee);
         String chatReview = editTextReview.getText().toString();
         String chatNominee = editTextNominee.getText().toString();
-        String category = onRadioButtonClicked(mainView);
+      //  String category = onRadioButtonClicked(mainView); THIS DOESN'T WORK IT MUST RETURN VOID
         String userName = settings.getString("reviewer_name", "Harvey Weinstein");
         String password = settings.getString("user_password", /*remove default password*/"oscar275");
         try
@@ -158,8 +158,8 @@ public class OscarSendActivity extends AppCompatActivity implements View.OnClick
             postParameters.add(new BasicNameValuePair("REVIEW", chatReview));
             postParameters.add(new BasicNameValuePair("REVIEWER", userName));
             postParameters.add(new BasicNameValuePair("NOMINEE", chatNominee));
-            postParameters.add(new BasicNameValuePair("CATEGORY", category));
-            postParameters.add(new BasicNameValuePair("PASSWORD", password));
+            postParameters.add(new BasicNameValuePair("CATEGORY", "actor")); //hardcoded
+            postParameters.add(new BasicNameValuePair("PASSWORD", "oscar275"));
             UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(postParameters);
             post.setEntity(formEntity);
             client.execute(post);
