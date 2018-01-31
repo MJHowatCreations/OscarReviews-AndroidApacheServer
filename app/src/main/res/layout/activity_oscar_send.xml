@@ -17,6 +17,13 @@
 
 
     >
+    <TextView
+        android:text="@string/nominee_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textStyle="bold" />
 
 
     <EditText
@@ -26,13 +33,25 @@
         android:layout_margin="5dp"
 
         />
+
+    <TextView
+        android:text="@string/review_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
     <EditText
         android:id="@+id/edit_text_review"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="5dp"
         />
+
+
     <RadioGroup
+        android:id="@+id/radio_group_category_choice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">

@@ -1,4 +1,4 @@
-/*package ca.mhowatnait.lab1_oscarreviews;
+package ca.mhowatnait.lab1_oscarreviews;
 
 import android.app.ListActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -32,7 +32,7 @@ public class OscarCustomListActivity extends ListActivity {
         String[] fields = new String[]{"REVIEWER", "DATE", "CATEGORY", "NOMINEE", "REVIEW"};
         int [] ids = new int[]{R.id.custom_list_cell_reviewer, R.id.custom_list_cell_date_time,
                 R.id.custom_list_cell_category, R.id.custom_list_cell_nominee, R.id.custom_list_cell_review};
-        SimpleAdapter adapter = new SimpleAdapter(this, chats, R.layout.activity_chatter_list_cell, fields, ids);
+        SimpleAdapter adapter = new SimpleAdapter(this, chats, R.layout.activity_oscar_list_cell, fields, ids);
         populateList();
         setListAdapter(adapter);
     }
@@ -74,4 +74,3 @@ public class OscarCustomListActivity extends ListActivity {
         }
     }
 }
-*/

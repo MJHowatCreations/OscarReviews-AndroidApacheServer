@@ -3,6 +3,9 @@
     <item android:id="@+id/menu_item_send_review"
         android:title="Send Reviews" />
 
+    <item android:id="@+id/menu_item_list_review"
+        android:title="View Reviews" />
+
     <item android:id="@+id/menu_item_preferences"
         android:title="Settings" />
 

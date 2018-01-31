@@ -16,4 +16,11 @@
     <string name="radio_button_visual_effects">Visual Effects</string>
 
 
+
+    <!-- Edit Text Headers -->
+
+    <string name="nominee_header">Enter Nominee</string>
+    <string name="review_header">Enter Review</string>
+
+
 </resources>

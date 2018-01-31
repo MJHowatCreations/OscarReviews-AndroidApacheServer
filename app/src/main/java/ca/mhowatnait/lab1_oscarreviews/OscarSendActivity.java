@@ -1,5 +1,6 @@
 package ca.mhowatnait.lab1_oscarreviews;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
@@ -27,9 +29,12 @@ import org.apache.http.message.BasicNameValuePair;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OscarSendActivity extends AppCompatActivity implements View.OnClickListener, SharedPreferences.OnSharedPreferenceChangeListener {
+public class OscarSendActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
     SharedPreferences settings;
     View mainView;
+    private RadioGroup radioGroup;
+    private RadioButton radioButton;
+    private Button sendButton;
 
 
 //    OVERRIDE METHODS
@@ -38,22 +43,29 @@ public class OscarSendActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oscar_send);
+        addListenerOnButton();
+
+
+
         settings = PreferenceManager.getDefaultSharedPreferences(this);
         settings.registerOnSharedPreferenceChangeListener(this);
 
+
+
+
+
         mainView = findViewById(R.id.layout_send_activity);
         String bgColor = settings.getString("main_bg_color_list", "#FFFFFF" );
-
         mainView.setBackgroundColor(Color.parseColor(bgColor));
+
+
+
+
 
         if(Build.VERSION.SDK_INT > 9){
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
-
-        Button sendButton = (Button) findViewById(R.id.oscar_send_button);
-        sendButton.setOnClickListener(this);
-
     }
 
 
@@ -83,6 +95,12 @@ public class OscarSendActivity extends AppCompatActivity implements View.OnClick
                 this.startActivity(intent);
                 break;
             }
+            case R.id.menu_item_list_review:
+            {
+                Intent intent = new Intent(this, OscarCustomListActivity.class);
+                this.startActivity(intent);
+                break;
+            }
             case R.id.menu_item_preferences:
             {
                 Intent intent = new Intent(this, PrefsActivity.class);
@@ -93,46 +111,49 @@ public class OscarSendActivity extends AppCompatActivity implements View.OnClick
         return true;
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.oscar_send_button: {
+    private void addListenerOnButton() {
+        radioGroup = (RadioGroup) findViewById(R.id.radio_group_category_choice);
+        sendButton = (Button) findViewById(R.id.oscar_send_button);
+        sendButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                int selectedID = radioGroup.getCheckedRadioButtonId();
+                radioButton = (RadioButton) findViewById(selectedID);
                 postToChatter();
-            }
-
-
-        }
+                }
+            });
     }
 
 //    METHODS
 
 
-    public String onRadioButtonClicked(View view) {
-        boolean checked = ((RadioButton) view).isChecked();
+    public String categoryConversion(){
         String radioStringReturn = "";
-        switch(view.getId()) {
+        switch(radioButton.getId()) {
             case R.id.radio_button_best_picture:
-                if (checked) {
+                {
                     radioStringReturn ="film";
                     break;
                 }
             case R.id.radio_button_best_actor:
-                if (checked) {
+                {
                     radioStringReturn = "actor";
                     break;
                 }
             case R.id.radio_button_best_actress:
-                if (checked) {
+                {
                     radioStringReturn = "actress";
                     break;
                 }
             case R.id.radio_button_film_editing:
-                if (checked) {
+                {
                     radioStringReturn = "editing";
                     break;
                 }
             case R.id.radio_button_visual_effects:;
-                if (checked) {
+                {
                     radioStringReturn = "effects";
                     break;
                 }
@@ -147,8 +168,8 @@ public class OscarSendActivity extends AppCompatActivity implements View.OnClick
         EditText editTextNominee = (EditText)findViewById(R.id.edit_text_nominee);
         String chatReview = editTextReview.getText().toString();
         String chatNominee = editTextNominee.getText().toString();
-      //  String category = onRadioButtonClicked(mainView); THIS DOESN'T WORK IT MUST RETURN VOID
-        String userName = settings.getString("reviewer_name", "Harvey Weinstein");
+        String category = categoryConversion();
+        String userName = settings.getString("reviewer_name", "Matthew");
         String password = settings.getString("user_password", /*remove default password*/"oscar275");
         try
         {
@@ -158,7 +179,7 @@ public class OscarSendActivity extends AppCompatActivity implements View.OnClick
             postParameters.add(new BasicNameValuePair("REVIEW", chatReview));
             postParameters.add(new BasicNameValuePair("REVIEWER", userName));
             postParameters.add(new BasicNameValuePair("NOMINEE", chatNominee));
-            postParameters.add(new BasicNameValuePair("CATEGORY", "actor")); //hardcoded
+            postParameters.add(new BasicNameValuePair("CATEGORY", category));
             postParameters.add(new BasicNameValuePair("PASSWORD", "oscar275"));
             UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(postParameters);
             post.setEntity(formEntity);
@@ -172,7 +193,5 @@ public class OscarSendActivity extends AppCompatActivity implements View.OnClick
         editTextReview.getText().clear();
         editTextNominee.getText().clear();
     }
-
-
 
 }
