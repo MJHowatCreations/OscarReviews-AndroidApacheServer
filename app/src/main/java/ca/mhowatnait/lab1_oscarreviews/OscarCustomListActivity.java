@@ -53,15 +53,11 @@ public class OscarCustomListActivity extends ListActivity {
             {
                 HashMap<String,String> temp = new HashMap<String, String>();
 
-
-                line = "Date: " + line;
+                line = getString(R.string.view_list_date) + line;
                 temp.put("DATE", line);
                 line = in.readLine();
                 line = "Reviewer: " + line;
                 temp.put("REVIEWER", line);
-
-
-
                 line = in.readLine();
                 line = categoryConversion(line);
                 line = "Category: " + line;
@@ -70,10 +66,9 @@ public class OscarCustomListActivity extends ListActivity {
                 line = "Nominee: " + line;
                 temp.put("NOMINEE", line);
                 line = in.readLine();
-                line = "Review: " + line;
+                line = "Review: "  + line;
                 temp.put("REVIEW", line);
                 chats.add(temp);
-
 
             }
             in.close();

@@ -15,12 +15,23 @@
     <string name="radio_button_film_editing">Film Editing</string>
     <string name="radio_button_visual_effects">Visual Effects</string>
 
-
+    <string name="radio_button_value_picture">film</string>
+    <string name="radio_button_value_actor">actor</string>
+    <string name="radio_button_value_actress">actress</string>
+    <string name="radio_button_value_editing">editing</string>
+    <string name="radio_button_value_effects">effects</string>
 
     <!-- Edit Text Headers -->
 
     <string name="nominee_header">Enter Nominee</string>
     <string name="review_header">Enter Review</string>
 
+    <!-- View List Headers -->
+
+    <string name="view_list_date">Date: </string>
+    <string name="view_list_reviewer">Reviewer: </string>
+    <string name="view_list_category">Category: </string>
+    <string name="view_list_nominee">Nominee: </string>
+    <string name="view_list_review">Review: </string>
 
 </resources>

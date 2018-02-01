@@ -135,7 +135,7 @@ public class OscarSendActivity extends AppCompatActivity implements SharedPrefer
         switch(radioButton.getId()) {
             case R.id.radio_button_best_picture:
                 {
-                    radioStringReturn ="film";
+                    radioStringReturn = "picture" ;
                     break;
                 }
             case R.id.radio_button_best_actor:
