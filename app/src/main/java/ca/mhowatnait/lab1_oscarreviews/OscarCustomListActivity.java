@@ -48,18 +48,29 @@ public class OscarCustomListActivity extends ListActivity {
             HttpResponse response = client.execute(request);
             in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 
-            String line ="";
+            String line;
             while((line = in.readLine()) != null)
             {
                 HashMap<String,String> temp = new HashMap<String, String>();
-                temp.put("REVIEWER", line);
-                line = in.readLine();
+
+
+                line = "Date: " + line;
                 temp.put("DATE", line);
                 line = in.readLine();
+                line = "Reviewer: " + line;
+                temp.put("REVIEWER", line);
+
+
+
+                line = in.readLine();
+                line = categoryConversion(line);
+                line = "Category: " + line;
                 temp.put("CATEGORY", line);
                 line = in.readLine();
+                line = "Nominee: " + line;
                 temp.put("NOMINEE", line);
                 line = in.readLine();
+                line = "Review: " + line;
                 temp.put("REVIEW", line);
                 chats.add(temp);
 
@@ -72,5 +83,37 @@ public class OscarCustomListActivity extends ListActivity {
         {
             Toast.makeText(this, "Error:" + e, Toast.LENGTH_LONG).show();
         }
+    }
+
+    public String categoryConversion(String inputText){
+        String radioStringReturn = "";
+        switch(inputText) {
+            case "film":
+            {
+                radioStringReturn ="Best Picture";
+                break;
+            }
+            case "actor":
+            {
+                radioStringReturn = "Best Actor";
+                break;
+            }
+            case "actress":
+            {
+                radioStringReturn = "Best Actress";
+                break;
+            }
+            case "editing":
+            {
+                radioStringReturn = "Film Editing";
+                break;
+            }
+            case "effects":
+            {
+                radioStringReturn = "Visual Effects";
+                break;
+            }
+        }
+        return radioStringReturn;
     }
 }

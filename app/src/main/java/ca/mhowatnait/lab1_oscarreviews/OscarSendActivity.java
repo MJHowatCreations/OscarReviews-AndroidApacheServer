@@ -71,6 +71,7 @@ public class OscarSendActivity extends AppCompatActivity implements SharedPrefer
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
+
         String bgColor = settings.getString("main_bg_color_list", "#FFFFFF" );
         mainView.setBackgroundColor(Color.parseColor(bgColor));
 
@@ -170,17 +171,18 @@ public class OscarSendActivity extends AppCompatActivity implements SharedPrefer
         String chatNominee = editTextNominee.getText().toString();
         String category = categoryConversion();
         String userName = settings.getString("reviewer_name", "Matthew");
-        String password = settings.getString("user_password", /*remove default password*/"oscar275");
+        String password = settings.getString("user_password", "*****");
+        String webServer = settings.getString("web_server_address", "http://www.youcode.ca/Lab01Servlet");
         try
         {
             HttpClient client = new DefaultHttpClient();
-            HttpPost post = new HttpPost("http://www.youcode.ca/Lab01Servlet");
+            HttpPost post = new HttpPost(webServer);
             List<NameValuePair> postParameters = new ArrayList<NameValuePair>();
             postParameters.add(new BasicNameValuePair("REVIEW", chatReview));
             postParameters.add(new BasicNameValuePair("REVIEWER", userName));
             postParameters.add(new BasicNameValuePair("NOMINEE", chatNominee));
             postParameters.add(new BasicNameValuePair("CATEGORY", category));
-            postParameters.add(new BasicNameValuePair("PASSWORD", "oscar275"));
+            postParameters.add(new BasicNameValuePair("PASSWORD", password));
             UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(postParameters);
             post.setEntity(formEntity);
             client.execute(post);

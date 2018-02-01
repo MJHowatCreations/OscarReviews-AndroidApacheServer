@@ -8,6 +8,7 @@
         android:id="@+id/custom_list_cell_reviewer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:textSize="12sp"
@@ -34,8 +35,8 @@
         android:id="@+id/custom_list_cell_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/custom_list_cell_reviewer"
-        android:layout_alignRight="@id/custom_list_cell_nominee"
+        android:layout_below="@id/custom_list_cell_date_time"
+        android:layout_alignParentRight="true"
         android:textSize="14sp"
         android:textStyle="bold" />
 
@@ -44,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/custom_list_cell_nominee"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
         android:textSize="14sp" />
 
 

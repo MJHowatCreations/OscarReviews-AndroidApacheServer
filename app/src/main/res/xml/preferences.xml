@@ -11,13 +11,11 @@
         android:title="Password"
         android:summary="Use this to change your password"
         android:password="true"
-        android:defaultValue=""
         />
     <EditTextPreference
         android:key="web_server_address"
         android:title="Web Server Address"
         android:summary="Change the default web server"
-        android:defaultValue=""
         />
 
     <ListPreference
