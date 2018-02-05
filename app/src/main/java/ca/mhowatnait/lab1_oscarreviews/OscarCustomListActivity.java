@@ -56,17 +56,17 @@ public class OscarCustomListActivity extends ListActivity {
                 line = getString(R.string.view_list_date) + line;
                 temp.put("DATE", line);
                 line = in.readLine();
-                line = "Reviewer: " + line;
+                line = getString(R.string.view_list_reviewer) + line;
                 temp.put("REVIEWER", line);
                 line = in.readLine();
                 line = categoryConversion(line);
-                line = "Category: " + line;
+                line = getString(R.string.view_list_category) + line;
                 temp.put("CATEGORY", line);
                 line = in.readLine();
-                line = "Nominee: " + line;
+                line = getString(R.string.view_list_nominee) + line;
                 temp.put("NOMINEE", line);
                 line = in.readLine();
-                line = "Review: "  + line;
+                line = getString(R.string.view_list_review)  + line;
                 temp.put("REVIEW", line);
                 chats.add(temp);
 

@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorOscarPrimaryBlack">#110e0e</color>
+    <color name="colorSecondaryBlack">#1a1717</color>
+    <color name="colorPrimaryGrey">#3c3030</color>
+
+
+
+
+
+    <color name="colorPrimaryGold">#dfca4e</color>
+    <color name="colorOscarGold">#EBAB47</color>
+    <color name="colorOscarGold_Ana_DarkGold">#D4AA35</color>
+    <color name="colorOscarGold_Ana_Rust">#D47B35</color>
+    <color name="colorOscarGold_Ana_Peach">#EDA991</color>
+
+
+    <color name="colorPrimaryRed">#ea2c0b</color>
+    <color name="colorPrimaryRed_Ana_Gold">#E59440</color>
+    <color name="colorPrimaryRed_Ana_Orange">#d34601</color>
+    <color name="colorPrimaryRed_Ana_Burgundy">#d30118</color>
+    <color name="colorPrimaryRed_Ana_White">#fdf8fc</color>
+
+
+
+
+
 </resources>

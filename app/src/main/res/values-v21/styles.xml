@@ -1,21 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorOscarGold</item>
-        <item name="colorPrimaryDark">@color/colorOscarPrimaryBlack</item>
-        <item name="colorAccent">@color/colorPrimaryRed_Ana_Burgundy</item>
-    </style>
-
-    <style name="OscarTheme" parent="Theme.AppCompat.Light.DarkActionBar" >
+    <style name="OscarTheme" parent="AppTheme">
         <item name="colorPrimary">@color/colorOscarGold</item>
         <item name="colorPrimaryDark">@color/colorOscarGold_Ana_DarkGold</item>
         <item name="colorAccent">@color/colorPrimaryRed_Ana_Burgundy</item>
         <item name="android:colorBackground">@color/colorPrimaryRed_Ana_White</item>
         <item name="android:colorForeground">@color/colorPrimaryGrey</item>
+        <item name="android:navigationBarColor">@color/colorOscarPrimaryBlack</item>
+        <item name="android:statusBarColor">@color/colorOscarGold_Ana_Rust</item>
         <item name="android:textColorPrimary">@color/colorOscarPrimaryBlack</item>
         <item name="android:textColorPrimaryInverse">@color/colorPrimaryRed_Ana_White</item>
     </style>
-
 </resources>
