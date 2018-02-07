@@ -34,4 +34,7 @@
     <string name="view_list_nominee">Nominee: </string>
     <string name="view_list_review">Review: </string>
 
+
+    <string name="spinner_text">Select Category: </string>
+
 </resources>

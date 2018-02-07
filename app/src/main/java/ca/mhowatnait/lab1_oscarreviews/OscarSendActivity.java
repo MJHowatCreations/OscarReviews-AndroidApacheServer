@@ -45,13 +45,8 @@ public class OscarSendActivity extends AppCompatActivity implements SharedPrefer
         setContentView(R.layout.activity_oscar_send);
         addListenerOnButton();
 
-
-
         settings = PreferenceManager.getDefaultSharedPreferences(this);
         settings.registerOnSharedPreferenceChangeListener(this);
-
-
-
 
 
         mainView = findViewById(R.id.layout_send_activity);
