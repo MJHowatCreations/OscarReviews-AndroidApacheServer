@@ -8,6 +8,7 @@
     tools:context="ca.mhowatnait.lab1_oscarreviews.OscarCustomListActivity">
 
     <TextView
+        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/spinner_text"
@@ -16,7 +17,8 @@
         android:id="@+id/category_spinner"
         android:layout_gravity="start"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:entries="@array/category_names">
 
     </Spinner>
 

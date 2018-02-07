@@ -29,7 +29,8 @@ public class OscarCustomListActivity extends ListActivity implements AdapterView
 
     ArrayList<HashMap<String, String>> chats = new ArrayList<HashMap<String, String>>();
     SharedPreferences settings;
-
+    Spinner categorySpinner = (Spinner) findViewById(R.id.category_spinner);
+    String categorySelected = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +40,11 @@ public class OscarCustomListActivity extends ListActivity implements AdapterView
         settings = PreferenceManager.getDefaultSharedPreferences(this);
         settings.registerOnSharedPreferenceChangeListener(this);
 
-        Spinner category_spinner = (Spinner) findViewById(R.id.category_spinner);
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.category_names, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        category_spinner.setAdapter(adapter);
-        category_spinner.setOnItemSelectedListener(this);
+        categorySpinner.setAdapter(adapter);
+        categorySpinner.setOnItemSelectedListener(this);
 
     }
 
@@ -54,12 +55,15 @@ public class OscarCustomListActivity extends ListActivity implements AdapterView
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        Object selectedCategory = parent.getItemAtPosition(pos);
 
-
-        Toast.makeText(this, selectedCategory.toString(), Toast.LENGTH_LONG).show();
-
-        displayOscar();
+        int spinner_pos = categorySpinner.getSelectedItemPosition();
+        String[] categoryValue = getResources().getStringArray(R.array.category_values);
+        if (spinner_pos == 0){
+            categorySelected = "";
+        }
+        else {
+            categorySelected = (categoryValue[spinner_pos]); // film, actor, actress etc.
+        }
 
     }
 
@@ -82,7 +86,6 @@ public class OscarCustomListActivity extends ListActivity implements AdapterView
     }
 
     private void populateList() {
-        String categorySelected = "film";
         BufferedReader in = null;
         ArrayList chatter = new ArrayList();
         try
