@@ -29,14 +29,13 @@ public class OscarCustomListActivity extends ListActivity implements AdapterView
 
     ArrayList<HashMap<String, String>> chats = new ArrayList<HashMap<String, String>>();
     SharedPreferences settings;
-    Spinner categorySpinner = (Spinner) findViewById(R.id.category_spinner);
-    String categorySelected = "";
+    static String categorySelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_oscar_custom_list);
-
+        Spinner categorySpinner = (Spinner) findViewById(R.id.category_spinner);
         settings = PreferenceManager.getDefaultSharedPreferences(this);
         settings.registerOnSharedPreferenceChangeListener(this);
 
@@ -55,21 +54,21 @@ public class OscarCustomListActivity extends ListActivity implements AdapterView
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-
-        int spinner_pos = categorySpinner.getSelectedItemPosition();
         String[] categoryValue = getResources().getStringArray(R.array.category_values);
-        if (spinner_pos == 0){
-            categorySelected = "";
-        }
-        else {
-            categorySelected = (categoryValue[spinner_pos]); // film, actor, actress etc.
-        }
+            categorySelected = (categoryValue[pos]);
+            if (pos == 0){
+                displayOscar();// film, actor, actress etc.
+            }
+            else{
+                categorySelected = "?CATEGORY=" + categorySelected;
+                displayOscar();
+            }
 
     }
 
+
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-        displayOscar();
 
     }
 
@@ -86,13 +85,13 @@ public class OscarCustomListActivity extends ListActivity implements AdapterView
     }
 
     private void populateList() {
+        chats.clear();
         BufferedReader in = null;
-        ArrayList chatter = new ArrayList();
         try
         {
             HttpClient client = new DefaultHttpClient();
             HttpGet request = new HttpGet();
-            request.setURI(new URI( settings.getString("web_server_address", "http://www.youcode.ca/Lab01Servlet") + "?CATEGORY=" + categorySelected));
+            request.setURI(new URI( settings.getString("web_server_address", "http://www.youcode.ca/Lab01Servlet") + categorySelected));
             HttpResponse response = client.execute(request);
             in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 
