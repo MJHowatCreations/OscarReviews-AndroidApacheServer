@@ -1,10 +1,9 @@
 package ca.mhowatnait.lab1_oscarreviews;
 
-import android.app.Activity;
+
 import android.app.ListActivity;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -12,14 +11,11 @@ import android.widget.ArrayAdapter;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-
 import java.io.BufferedReader;
-import java.io.Console;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.util.ArrayList;
@@ -27,9 +23,9 @@ import java.util.HashMap;
 
 public class OscarCustomListActivity extends ListActivity implements AdapterView.OnItemSelectedListener, SharedPreferences.OnSharedPreferenceChangeListener {
 
+    static String categorySelected;
     ArrayList<HashMap<String, String>> chats = new ArrayList<HashMap<String, String>>();
     SharedPreferences settings;
-    static String categorySelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +82,7 @@ public class OscarCustomListActivity extends ListActivity implements AdapterView
 
     private void populateList() {
         chats.clear();
-        BufferedReader in = null;
+        BufferedReader in;
         try
         {
             HttpClient client = new DefaultHttpClient();

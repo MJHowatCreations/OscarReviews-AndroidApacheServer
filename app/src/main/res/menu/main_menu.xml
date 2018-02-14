@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/menu_item_send_review"
-        android:title="Send Reviews" />
+        android:title="@string/menu_item_send" />
 
     <item android:id="@+id/menu_item_list_review"
-        android:title="View Reviews" />
+        android:title="@string/menu_item_list" />
 
     <item android:id="@+id/menu_item_preferences"
-        android:title="Settings" />
+        android:title="@string/menu_item_preference" />
 
 </menu>

@@ -8,16 +8,17 @@
     tools:context="ca.mhowatnait.lab1_oscarreviews.OscarCustomListActivity">
 
     <TextView
-        android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/spinner_text"
-        android:layout_gravity="start"/>
+        android:layout_gravity="start"
+        android:layout_marginTop="20dp"
+        android:text="@string/spinner_text"/>
     <Spinner
         android:id="@+id/category_spinner"
-        android:layout_gravity="start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginBottom="20dp"
         android:entries="@array/category_names">
 
     </Spinner>
@@ -38,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="No Reviews Here" />
+        android:text="@string/oscar_no_list_text" />
 
 
 

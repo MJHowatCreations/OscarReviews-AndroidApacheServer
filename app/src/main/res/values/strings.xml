@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">Oscar Review</string>
 
+    <!-- Text View -->
+    <string name="oscar_no_list_text">No Reviews Here</string>
+
+    <!-- Edit Text Hints -->
+    <string name="edit_text_nominee_hint">Please enter a nominee here.</string>
+    <string name="edit_text_review_hint">Please enter a review here.</string>
+
 
     <!-- Button Names -->
 
@@ -36,5 +43,13 @@
 
 
     <string name="spinner_text">Select Category: </string>
+
+    <!-- Menu Item Names -->
+
+    <string name="menu_item_list">View Reviews</string>
+    <string name="menu_item_preference">Settings</string>
+    <string name="menu_item_send">Send Reviews</string>
+
+
 
 </resources>

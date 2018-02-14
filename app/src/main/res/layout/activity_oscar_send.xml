@@ -2,20 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_send_activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="ca.mhowatnait.lab1_oscarreviews.OscarSendActivity"
-    android:id="@+id/layout_send_activity"
     >
     <TextView
-        android:text="@string/nominee_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:text="@string/nominee_header"
+        android:textAppearance="@style/OscarTheme"
         android:textSize="12sp"
-        android:textStyle="bold"
-        android:textAppearance="@style/OscarTheme"/>
+        android:textStyle="bold"/>
 
 
     <EditText
@@ -23,22 +23,24 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="5dp"
-
+        android:hint="@string/edit_text_nominee_hint"
         />
 
     <TextView
-        android:text="@string/review_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:text="@string/review_header"
+        android:textAppearance="@style/OscarTheme"
         android:textSize="12sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 
     <EditText
         android:id="@+id/edit_text_review"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_margin="5dp"
+        android:hint="@string/edit_text_review_hint"
         />
 
 
